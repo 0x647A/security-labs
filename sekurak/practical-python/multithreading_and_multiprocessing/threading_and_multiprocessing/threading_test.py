@@ -1,7 +1,6 @@
 import threading
 import time
 
-
 ALA_INTERVAL = 0.1    # seconds
 MA_INTERVAL = 0.35    # seconds
 KOTA_INTERVAL = 0.66  # seconds

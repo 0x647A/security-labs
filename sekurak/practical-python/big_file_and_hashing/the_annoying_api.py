@@ -1,10 +1,10 @@
-import os
-import requests
 import hashlib
+import os
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
-import threading
 
+import requests
 
 SERVER = "SECRET_API"
 CHUNK_SIZE = 32  # API requirement
@@ -136,7 +136,10 @@ def find_corrupted_regions(original):
     size = len(original)
     corrupted_regions = []
 
-    print(f"[*] Phase 1: Scanning for corrupted regions with {INITIAL_BLOCK_SIZE} byte blocks...")
+    print(
+        "[*] Phase 1: Scanning for corrupted regions with"
+        f" {INITIAL_BLOCK_SIZE} byte blocks..."
+    )
 
     for offset in range(0, size, INITIAL_BLOCK_SIZE):
         actual_size = min(INITIAL_BLOCK_SIZE, size - offset)
@@ -149,7 +152,9 @@ def find_corrupted_regions(original):
         server_hash = get_correct_hash(offset, actual_size, pow_token)
 
         if server_hash:
-            local_hash = hashlib.sha256(original[offset:offset + actual_size]).hexdigest()
+            local_hash = hashlib.sha256(
+                original[offset:offset + actual_size]
+            ).hexdigest()
             if local_hash != server_hash:
                 corrupted_regions.append((offset, offset + actual_size))
                 print(f"[!] Corrupted region found: {offset}-{offset + actual_size}")
@@ -167,7 +172,8 @@ def fix_corrupted_regions(original, fixed, corrupted_regions):
 
     def fix_region(region_info):
         region_idx, (start, end) = region_info
-        print(f"[*] Fixing region {region_idx + 1}/{len(corrupted_regions)}: {start}-{end}")
+        total = len(corrupted_regions)
+        print(f"[*] Fixing region {region_idx + 1}/{total}: {start}-{end}")
         hierarchical_binary_search(original, fixed, start, end)
         print(f"[+] Region {region_idx + 1} fixed")
 
@@ -192,7 +198,8 @@ def fix_file(filename):
     size = len(original)
 
     print(f"[*] File size: {size} bytes ({size / 1024:.1f} KB)")
-    print(f"[*] Estimated blocks to check: {(size + INITIAL_BLOCK_SIZE - 1) // INITIAL_BLOCK_SIZE}")
+    blocks = (size + INITIAL_BLOCK_SIZE - 1) // INITIAL_BLOCK_SIZE
+    print(f"[*] Estimated blocks to check: {blocks}")
 
     start_time = time.time()
 
@@ -214,7 +221,9 @@ def fix_file(filename):
 
     elapsed_time = time.time() - start_time
     print(f"[+] File fixed and saved as {output_path}")
-    print(f"[+] Total time: {elapsed_time:.1f} seconds ({elapsed_time / 60:.1f} minutes)")
+    print(
+        f"[+] Total time: {elapsed_time:.1f} seconds ({elapsed_time / 60:.1f} minutes)"
+    )
     print(f"[+] Hash cache entries: {len(hash_cache)}")
 
 if __name__ == "__main__":

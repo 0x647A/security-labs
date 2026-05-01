@@ -63,7 +63,9 @@ if __name__ == "__main__":
         print(f"Execution time: {data['time']:.4f} seconds")
         print(f"Peak memory usage: {data['memory']:.2f} KB")
 
-    a, b, c = results["os.walk"]["result"], results["rglob"]["result"], results["manual"]["result"]
+    a = results["os.walk"]["result"]
+    b = results["rglob"]["result"]
+    c = results["manual"]["result"]
 
     print("\nRESULT COMPARISON:")
     print("os.walk == rglob:", a == b)

@@ -16,7 +16,10 @@ def find_password(target_hash: str, words: list[str]) -> str | None:
         for word2 in words:
             for suffix in range(100):
                 candidate = f"{word1}{word2}{suffix:02d}"
-                if hashlib.md5(candidate.encode(), usedforsecurity=False).hexdigest() == target_hash:
+                digest = hashlib.md5(
+                    candidate.encode(), usedforsecurity=False
+                ).hexdigest()
+                if digest == target_hash:
                     return candidate
     return None
 

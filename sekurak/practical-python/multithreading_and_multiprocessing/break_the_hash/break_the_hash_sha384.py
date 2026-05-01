@@ -9,13 +9,16 @@ def find_password(target_hash: str, wordlist_path: Path) -> str | None:
     with open(wordlist_path, "r", encoding="utf-8") as f:
         for line in f:
             word = line.strip()
-            if hashlib.sha384(word.encode(), usedforsecurity=False).hexdigest() == target_hash:
+            digest = hashlib.sha384(word.encode(), usedforsecurity=False).hexdigest()
+            if digest == target_hash:
                 return word
     return None
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Crack a SHA-384 hash using a wordlist")
+    parser = argparse.ArgumentParser(
+        description="Crack a SHA-384 hash using a wordlist"
+    )
     parser.add_argument("hash", help="Target SHA-384 hash to crack")
     parser.add_argument(
         "--wordlist",
