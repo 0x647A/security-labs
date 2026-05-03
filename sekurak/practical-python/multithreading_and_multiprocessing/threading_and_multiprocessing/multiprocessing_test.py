@@ -1,7 +1,6 @@
 import multiprocessing
 import time
 
-
 ALA_INTERVAL = 0.1    # seconds
 MA_INTERVAL = 0.35    # seconds
 KOTA_INTERVAL = 0.66  # seconds
@@ -21,7 +20,10 @@ if __name__ == "__main__":
         ("KOTA", KOTA_INTERVAL),
     ]
     for word, interval in words:
-        multiprocessing.Process(target=print_word, args=(word, interval), daemon=True).start()
+        p = multiprocessing.Process(
+            target=print_word, args=(word, interval), daemon=True
+        )
+        p.start()
 
     while True:
         time.sleep(1)

@@ -4,16 +4,16 @@ import string
 import sys
 from itertools import product
 
-
 MAX_LENGTH = 5
 
 
 def find_password(target_hash: str) -> str | None:
-    """Brute-force a lowercase password up to MAX_LENGTH characters against a SHA-1 hash."""
+    """Brute-force a lowercase password up to MAX_LENGTH characters against SHA-1."""
     for length in range(1, MAX_LENGTH + 1):
         for combo in product(string.ascii_lowercase, repeat=length):
             candidate = "".join(combo)
-            if hashlib.sha1(candidate.encode(), usedforsecurity=False).hexdigest() == target_hash:
+            digest = hashlib.sha1(candidate.encode(), usedforsecurity=False).hexdigest()
+            if digest == target_hash:
                 return candidate
     return None
 

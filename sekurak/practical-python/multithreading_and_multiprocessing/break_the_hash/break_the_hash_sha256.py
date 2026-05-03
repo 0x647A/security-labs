@@ -4,7 +4,6 @@ import string
 import sys
 from itertools import product
 
-
 MAX_LENGTH = 8
 
 
@@ -13,7 +12,10 @@ def find_password(target_hash: str) -> str | None:
     for length in range(1, MAX_LENGTH + 1):
         for combo in product(string.digits, repeat=length):
             candidate = "".join(combo)
-            if hashlib.sha256(candidate.encode(), usedforsecurity=False).hexdigest() == target_hash:
+            digest = hashlib.sha256(
+                candidate.encode(), usedforsecurity=False
+            ).hexdigest()
+            if digest == target_hash:
                 return candidate
     return None
 

@@ -2,7 +2,7 @@ import subprocess
 
 
 def _sysctl(key: str) -> str:
-    """Run sysctl -n <key> and return the stripped output, or raise RuntimeError on failure."""
+    """Run sysctl -n <key> and return stripped output, or raise RuntimeError."""
     result = subprocess.run(
         ["sysctl", "-n", key],
         capture_output=True,
@@ -21,7 +21,7 @@ def get_cpu_model() -> str:
     try:
         return _sysctl("machdep.cpu.brand_string")
     except RuntimeError:
-        # machdep.cpu.brand_string is Intel-only; Apple Silicon exposes no equivalent sysctl key
+        # Intel-only key; Apple Silicon has no equivalent sysctl
         return "Apple Silicon (model unavailable via sysctl)"
 
 

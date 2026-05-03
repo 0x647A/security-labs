@@ -2,7 +2,6 @@ import random
 import string
 import zlib
 
-
 # Each iteration generates 2 passwords (one digit-only, one letter-only),
 # so up to 2 * MAX_ITERATIONS passwords are evaluated in total.
 MAX_ITERATIONS = 1_000_000
@@ -27,14 +26,16 @@ def find_collision(iterations: int) -> tuple[str, str, int] | None:
     letters_by_crc: dict[int, str] = {}  # crc32 value → letter-only password
 
     for _ in range(iterations):
-        digit_pass = "".join(random.choices(string.digits, k=random.randint(MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH)))
+        length = random.randint(MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH)
+        digit_pass = "".join(random.choices(string.digits, k=length))
         digit_crc = zlib.crc32(digit_pass.encode())
         if digit_crc not in digits_by_crc and len(digits_by_crc) < MAX_CACHE_SIZE:
             digits_by_crc[digit_crc] = digit_pass
             if digit_crc in letters_by_crc:
                 return digit_pass, letters_by_crc[digit_crc], digit_crc
 
-        letter_pass = "".join(random.choices(string.ascii_lowercase, k=random.randint(MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH)))
+        length = random.randint(MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH)
+        letter_pass = "".join(random.choices(string.ascii_lowercase, k=length))
         letter_crc = zlib.crc32(letter_pass.encode())
         if letter_crc not in letters_by_crc and len(letters_by_crc) < MAX_CACHE_SIZE:
             letters_by_crc[letter_crc] = letter_pass

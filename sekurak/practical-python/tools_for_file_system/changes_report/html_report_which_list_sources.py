@@ -1,7 +1,7 @@
-import os
-import sys
-import pathlib
 import html
+import os
+import pathlib
+import sys
 from datetime import datetime
 
 EXTENSION_LANG_MAP = {
@@ -28,48 +28,48 @@ def count_non_empty_lines(filepath):
         return sum(1 for line in f if line.strip())
     
 def generate_html_report(file_info_list):
-    html_content = f"""<!DOCTYPE html>
+    html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>H4CK3R R3P0RT</title>
     <style>
-        body {{
+        body {
             background-color: #000000;
             color: #00FF00;
             font-family: "Courier New", Courier, monospace;
             padding: 20px;
-        }}
-        h1 {{
+        }
+        h1 {
             text-shadow: 0 0 5px #00FF00;
             font-size: 32px;
             border-bottom: 2px solid #00FF00;
             padding-bottom: 10px;
-        }}
-        table {{
+        }
+        table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-        }}
-        th, td {{
+        }
+        th, td {
             border: 1px solid #00FF00;
             padding: 8px;
             text-align: left;
-        }}
-        th {{
+        }
+        th {
             background-color: #002200;
-        }}
-        tr:nth-child(even) {{
+        }
+        tr:nth-child(even) {
             background-color: #001100;
-        }}
-        tr:hover {{
+        }
+        tr:hover {
             background-color: #003300;
-        }}
-        footer {{
+        }
+        footer {
             margin-top: 40px;
             font-size: 0.8em;
             color: #00FF00;
-        }}
+        }
     </style>
 </head>
 <body>
@@ -78,7 +78,11 @@ def generate_html_report(file_info_list):
         <tr><th>🗂️ File</th><th>💬 Language</th><th>📏 Lines of Code</th></tr>
 """
     for filepath, lang, line_count in file_info_list:
-        html_content += f"<tr><td>{html.escape(filepath)}</td><td>{html.escape(lang)}</td><td>{line_count}</td></tr>\n"
+        html_content += (
+            f"<tr><td>{html.escape(filepath)}</td>"
+            f"<td>{html.escape(lang)}</td>"
+            f"<td>{line_count}</td></tr>\n"
+        )
 
     html_content += f"""    </table>
     <footer>

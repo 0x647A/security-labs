@@ -4,7 +4,11 @@ import re
 def detect_language_by_regex(file_path):
     regex_patterns = {
         "Python": [r"^\s*from\s+\w+", r"^\s*for\s+\w+\s+in\s+", r".*:\s*$"],
-        "C/C++": [r"^\s*#include\s+<.*>", r"^\s*#define\s+\w+", r"^\s*(int|void|char)\s+\w+\s*\(.*\)"],
+        "C/C++": [
+            r"^\s*#include\s+<.*>",
+            r"^\s*#define\s+\w+",
+            r"^\s*(int|void|char)\s+\w+\s*\(.*\)",
+        ],
         "PHP": [r"<\?php", r"^\s*echo\s+.*;", r"\$\w+\s*="],
         "HTML": [r"<html.*?>", r"<body.*?>", r"<div.*?>"]
     }

@@ -1,8 +1,7 @@
-import os
 import json
+import os
 from datetime import datetime
 from pathlib import Path
-
 
 SOURCE_FOLDER = "/your/path"
 HISTORY_FILE = Path(__file__).parent / "progress.json"

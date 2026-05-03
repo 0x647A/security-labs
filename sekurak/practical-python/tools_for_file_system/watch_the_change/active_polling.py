@@ -1,8 +1,6 @@
 import os
 import time
-
 from pathlib import Path
-
 
 DIR_TO_WATCH = Path("/your/path")
 

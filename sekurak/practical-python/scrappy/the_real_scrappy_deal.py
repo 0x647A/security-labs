@@ -79,7 +79,8 @@ def extract_links(content: str, base_url: str) -> set[str]:
         logger.debug("HTML parsing failed for %s: %s", base_url, exc)
 
     # CSS url() references — not captured by tag-based parsing above
-    for match in re.finditer(r'url\(["\']?([^"\')\s]+)["\']?\)', content, re.IGNORECASE):
+    pattern = r'url\(["\']?([^"\')\s]+)["\']?\)'
+    for match in re.finditer(pattern, content, re.IGNORECASE):
         links.add(urljoin(base_url, match.group(1)))
 
     return links

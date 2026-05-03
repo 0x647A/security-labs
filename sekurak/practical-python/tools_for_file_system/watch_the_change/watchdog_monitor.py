@@ -1,7 +1,8 @@
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
-from pathlib import Path
 import time
+from pathlib import Path
+
+from watchdog.events import FileSystemEventHandler
+from watchdog.observers import Observer
 
 
 class MyHandler(FileSystemEventHandler):
