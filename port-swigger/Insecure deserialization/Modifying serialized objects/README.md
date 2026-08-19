@@ -14,17 +14,15 @@ An attacker who decodes the cookie, changes `admin` from `false` to `true`, and 
 
 ---
 
-## Lab Landing Page
+## Steps to Solve the Lab
+
+### 1. Open the lab
 
 The lab is a shopping site. It starts in the **Not solved** state.
 
 ![Lab landing page](step1.png)
 
----
-
-## Steps to Solve the Lab
-
-### 1. Log in and capture the session cookie
+### 2. Log in and capture the session cookie
 
 Log in as `wiener` with the password `peter`, and intercept the traffic in Burp Suite.
 
@@ -32,13 +30,13 @@ Log in as `wiener` with the password `peter`, and intercept the traffic in Burp 
 
 Locate the `session` cookie - it is a long, URL-encoded, base64 string.
 
-### 2. Send the request to Decoder
+### 3. Send the request to Decoder
 
 In Burp's HTTP history, right-click the login request (or any authenticated request that carries the `session` cookie) and choose **Send to Decoder**.
 
 ![Send to Decoder](step3.png)
 
-### 3. Decode the serialized object
+### 4. Decode the serialized object
 
 In **Decoder**, apply the following transformations to the `session` cookie value:
 
@@ -53,7 +51,7 @@ O:4:"User":2:{s:8:"username";s:6:"wiener";s:5:"admin";b:0;}
 
 `b:0` is PHP's boolean `false`; `b:1` is `true`.
 
-### 4. Modify the admin flag
+### 5. Modify the admin flag
 
 Change `b:0` to `b:1` in the serialized string:
 
@@ -68,13 +66,13 @@ Re-encode the modified value by reversing the earlier steps:
 
 ![Decode, modify, and re-encode in Decoder](step4.png)
 
-### 5. Inject the modified cookie
+### 6. Inject the modified cookie
 
 Turn on **Intercept**, request the home page, and replace the `session` cookie value with the modified one before forwarding the request.
 
 ![Replace the session cookie](step5.png)
 
-### 6. Access the admin panel
+### 7. Access the admin panel
 
 Once the modified cookie is accepted, the **Admin panel** link appears in the navigation bar.
 
@@ -84,7 +82,7 @@ Open the admin panel and delete the user `carlos`.
 
 ![Admin panel - delete carlos](step7.png)
 
-### 7. Result
+### 8. Result
 
 The lab banner changes to **"Congratulations, you solved the lab!"**.
 
@@ -118,6 +116,4 @@ There is no signature or integrity check on the cookie. Anyone who can decode (b
 
 ---
 
-## Reference
-
-- Lab: [Modifying serialized objects](https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-modifying-serialized-objects)
+Link: https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-modifying-serialized-objects

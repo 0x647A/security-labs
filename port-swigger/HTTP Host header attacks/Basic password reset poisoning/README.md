@@ -4,8 +4,6 @@
 
 **Level: Apprentice**
 
-**Link:** https://portswigger.net/web-security/host-header/exploiting/password-reset-poisoning/lab-host-header-basic-password-reset-poisoning
-
 ---
 
 ## Vulnerability Overview
@@ -35,6 +33,10 @@ On the login page, click **Forgot password?**, enter your username `wiener`, and
 ![Requesting a password reset for wiener](step3.png)
 
 ![Reset confirmation message](step4.png)
+
+Following the link from the reset email leads to a **New password** form, confirming the reset flow works end-to-end for a legitimate request.
+
+![New password form reached via the reset link](step7.png)
 
 Open the exploit server's **Email client** and note that the baseline reset link is built from the genuine lab domain - this is the value that comes from the `Host` header.
 
@@ -147,3 +149,7 @@ The `Host` header is supplied by the client and is not validated against a list 
 - **Validate the `Host` header against an allowlist.** If dynamic host values are genuinely required (for example, multi-tenant apps), maintain a list of valid domains and reject anything not on it.
 - **Derive security-sensitive URLs from server-side configuration.** Password reset links, email confirmation links, and similar URLs must come from trusted configuration, not from client-supplied headers.
 - **Bind reset tokens to the account and expire them quickly.** This is defence in depth: it does not prevent poisoning, but it narrows the window in which a leaked token is useful.
+
+---
+
+Link: https://portswigger.net/web-security/host-header/exploiting/password-reset-poisoning/lab-host-header-basic-password-reset-poisoning

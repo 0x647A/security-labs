@@ -9,7 +9,7 @@
 
 This lab demonstrates privilege escalation via a client-controlled role cookie. The application stores the user's role in a browser cookie (`Admin=false`) and trusts this value on every request to determine access rights. Because the cookie is stored on the client and never validated against a server-side session, any user can simply edit the cookie value to grant themselves admin access.
 
-This is a **client-side authorization** flaw — the server delegates the trust decision to data it doesn't control.
+This is a **client-side authorization** flaw - the server delegates the trust decision to data it doesn't control.
 
 ---
 
@@ -63,15 +63,15 @@ if request.cookies.get('Admin') == 'true':
     render_admin_panel()
 ```
 
-Since cookies are stored in the browser and modifiable by the user, this check is trivially bypassed. There is no server-side record of who is actually an admin — the cookie is the only source of truth, and it is fully controlled by the client.
+Since cookies are stored in the browser and modifiable by the user, this check is trivially bypassed. There is no server-side record of who is actually an admin - the cookie is the only source of truth, and it is fully controlled by the client.
 
 ---
 
 ## Remediation
 
-- **Store authorization state server-side** — the session ID (cookie) should map to a server-side session record that contains the role. The role is never sent to or accepted from the client.
-- **Never trust client-supplied role or privilege data** — any value that arrives from the client (cookie, header, hidden form field) must be treated as untrusted.
-- **Use signed/encrypted session tokens** — if the role must be embedded in a token (e.g., JWT), sign it with a secret key so tampering is detectable.
+- **Store authorization state server-side** - the session ID (cookie) should map to a server-side session record that contains the role. The role is never sent to or accepted from the client.
+- **Never trust client-supplied role or privilege data** - any value that arrives from the client (cookie, header, hidden form field) must be treated as untrusted.
+- **Use signed/encrypted session tokens** - if the role must be embedded in a token (e.g., JWT), sign it with a secret key so tampering is detectable.
 
 ---
 

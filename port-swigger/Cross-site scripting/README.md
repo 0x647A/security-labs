@@ -6,9 +6,10 @@ Each lab has its own folder containing a detailed write-up (`README.md`) and scr
 documenting the exploitation and the solved state.
 
 This repository is part of my security learning portfolio as I work toward a
-**Junior SOC Analyst** role. For every lab I document not only *how* the vulnerability is
-exploited, but also *why* it works and - most importantly - *how to remediate and detect it*,
-which reflects a defensive (blue-team) mindset.
+**Junior AppSec / Penetration Testing** role. For every lab I document not only *how* the
+vulnerability is exploited, but also *why* it works and - most importantly - *how to remediate
+it*, since understanding root cause is what separates running a payload from actually
+understanding the vulnerability.
 
 ---
 
@@ -51,10 +52,9 @@ URL scheme).
 Every lab folder follows the same template:
 
 1. **Vulnerability Overview** - what the flaw is, plus the *source* and *sink* for DOM-based labs.
-2. **Steps to Solve the Lab** - reproducible, step-by-step exploitation.
+2. **Steps to Solve the Lab** - reproducible, step-by-step exploitation, with screenshots evidencing each step and the solved lab.
 3. **Why This Works** - the underlying mechanism.
 4. **Remediation** - how to fix and defend against it.
-5. **Screenshots** - evidence of exploitation and the solved lab.
 
 ---
 

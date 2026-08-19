@@ -4,8 +4,6 @@
 
 **Level: Apprentice**
 
-**Link:** https://portswigger.net/web-security/host-header/exploiting/lab-host-header-authentication-bypass
-
 ---
 
 ## Vulnerability Overview
@@ -98,3 +96,7 @@ The `Host` header is not a reliable indicator of request origin - it is set by t
 - **Derive network origin from the connection, not from a header.** If local-only access is genuinely required, compare the client's IP address taken from the socket (not from any header) against `127.0.0.1` or `::1`. This is hard to spoof from an external attacker.
 - **Prefer role-based access control.** Instead of inferring admin rights from network location, enforce them through authenticated user roles stored server-side.
 - **Validate the `Host` header against a static allowlist.** Reject requests with unexpected `Host` values at the reverse proxy, before they reach the application.
+
+---
+
+Link: https://portswigger.net/web-security/host-header/exploiting/lab-host-header-authentication-bypass

@@ -1,4 +1,4 @@
-# Clickjacking — PortSwigger Web Security Academy
+# Clickjacking - PortSwigger Web Security Academy
 
 Write-ups and exploit walkthroughs for the **Clickjacking** labs from the
 [PortSwigger Web Security Academy](https://portswigger.net/web-security/clickjacking).
@@ -6,7 +6,7 @@ Write-ups and exploit walkthroughs for the **Clickjacking** labs from the
 Clickjacking (UI redressing) is an attack where a malicious page overlays a
 nearly invisible iframe of a target site on top of decoy content. The victim
 believes they are interacting with the attacker's page, but their clicks land
-on actions inside the framed target site — executed in the victim's own
+on actions inside the framed target site - executed in the victim's own
 authenticated session.
 
 Each folder contains a step-by-step write-up, the exploit code, and annotated
@@ -26,9 +26,9 @@ screenshots.
 
 ## Key Takeaways
 
-- **CSRF tokens do not prevent clickjacking** — the framed request comes from
+- **CSRF tokens do not prevent clickjacking** - the framed request comes from
   the real form, so the token is valid.
-- **JavaScript frame busters are unreliable** — they can be neutralised with the
+- **JavaScript frame busters are unreliable** - they can be neutralised with the
   iframe `sandbox` attribute.
 - **The correct defense is HTTP headers**, enforced by the browser before any
   page content loads:

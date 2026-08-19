@@ -11,7 +11,7 @@
 
 This lab demonstrates a broken password reset flow where the reset token is validated independently of the username in the final reset request. The server checks that the token is valid, but never verifies that the token was issued for the user specified in the `username` field. An attacker who obtains a valid token (for their own account) can reuse it to reset a different user's password.
 
-The root cause is **missing binding between the token and the account** at the reset step — the server treats them as two independent inputs rather than a bound pair.
+The root cause is **missing binding between the token and the account** at the reset step - the server treats them as two independent inputs rather than a bound pair.
 
 ![Lab landing page](step1.png)
 
@@ -55,11 +55,11 @@ The root cause is **missing binding between the token and the account** at the r
 
 ### 6. Swap the username to carlos while keeping your token
 - In Repeater, change `username=wiener` to `username=carlos` while keeping the `temp-forgot-password-token` unchanged.
-- Set new passwords and send. The server accepts the request — carlos's password is now changed.
+- Set new passwords and send. The server accepts the request - carlos's password is now changed.
 
   ![Modified request in Repeater with username=carlos](step9.png)
 
-> **Note:** In this lab the token is not properly validated at all — the request also succeeds if you **delete** the `temp-forgot-password-token` entirely. This reinforces the point: the server never ties the token to a specific account.
+> **Note:** In this lab the token is not properly validated at all - the request also succeeds if you **delete** the `temp-forgot-password-token` entirely. This reinforces the point: the server never ties the token to a specific account.
 
 ### 7. Log in as carlos
 - Log in with `carlos` and the new password.
@@ -95,7 +95,7 @@ The token and the target account are never cross-referenced.
 
 ## Remediation
 
-- **Bind the token to the user at issuance time** — store `{token: "abc123", user_id: 42}` in the database. At reset time, look up the user from the token — never accept a `username` field.
+- **Bind the token to the user at issuance time** - store `{token: "abc123", user_id: 42}` in the database. At reset time, look up the user from the token - never accept a `username` field.
   ```python
   def reset_password(request):
       token = request.form['token']
@@ -105,11 +105,11 @@ The token and the target account are never cross-referenced.
       user = db.get_user(record.user_id)   # derived from token, not user input
       user.set_password(request.form['new-password'])
   ```
-- **Expire tokens after single use** — invalidate the token immediately after it's used.
-- **Short token lifetime** — reset tokens should expire within 15–60 minutes.
+- **Expire tokens after single use** - invalidate the token immediately after it's used.
+- **Short token lifetime** - reset tokens should expire within 15-60 minutes.
 
 ---
 
-**OWASP Top 10:** A07:2021 – Identification and Authentication Failures
+**OWASP Top 10:** A07:2021 - Identification and Authentication Failures
 
 Link: https://portswigger.net/web-security/authentication/other-mechanisms/lab-password-reset-broken-logic

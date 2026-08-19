@@ -11,7 +11,7 @@
 
 Username enumeration occurs when an application's error messages differ depending on whether a username exists. An attacker can use this difference to build a list of valid usernames, reducing a brute-force attack from trying all username+password combinations to just passwords for confirmed users.
 
-In this lab, the login form responds with "Invalid username" for unknown users and "Incorrect password" for valid usernames with wrong passwords. This behavioral difference is detectable by automated tools — a single Burp Intruder sweep reveals which usernames are registered.
+In this lab, the login form responds with "Invalid username" for unknown users and "Incorrect password" for valid usernames with wrong passwords. This behavioral difference is detectable by automated tools - a single Burp Intruder sweep reveals which usernames are registered.
 
 The root cause is **information leakage through differential error messages**.
 
@@ -42,7 +42,7 @@ The root cause is **information leakage through differential error messages**.
   ![Username wordlist loaded in Intruder](step5.png)
 
 - Start the attack and compare response lengths or body content.
-- One response will differ — the message changes from "Invalid username" to "Incorrect password", revealing the valid username (here, `info`).
+- One response will differ - the message changes from "Invalid username" to "Incorrect password", revealing the valid username (here, `info`).
 
   ![Intruder results showing the valid username "info"](step6.png)
 
@@ -53,7 +53,7 @@ The root cause is **information leakage through differential error messages**.
 
   ![Password wordlist loaded in Intruder](step7.png)
 
-- Find the response with a `302` redirect (successful login) — note the password (here, `maggie`).
+- Find the response with a `302` redirect (successful login) - note the password (here, `maggie`).
 
   ![Intruder results showing the 302 redirect and valid password](step8.png)
 
@@ -84,12 +84,12 @@ This binary signal is enough to enumerate the entire user database one username 
 ## Remediation
 
 - **Use a single generic error message** for all failed login attempts: "Invalid username or password." Never distinguish between "user not found" and "wrong password."
-- **Normalize response timing** — even with identical messages, timing differences (the user lookup is faster if the user doesn't exist) can leak information. Use constant-time comparison and add artificial delay if needed.
-- **Rate-limit login attempts** — implement progressive delays, account lockout after N failures, or CAPTCHA to slow brute-force regardless of enumeration.
-- **Monitor for enumeration patterns** — repeated login failures from a single IP targeting different usernames is a detectable signal.
+- **Normalize response timing** - even with identical messages, timing differences (the user lookup is faster if the user doesn't exist) can leak information. Use constant-time comparison and add artificial delay if needed.
+- **Rate-limit login attempts** - implement progressive delays, account lockout after N failures, or CAPTCHA to slow brute-force regardless of enumeration.
+- **Monitor for enumeration patterns** - repeated login failures from a single IP targeting different usernames is a detectable signal.
 
 ---
 
-**OWASP Top 10:** A07:2021 – Identification and Authentication Failures
+**OWASP Top 10:** A07:2021 - Identification and Authentication Failures
 
 Link: https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-different-responses

@@ -97,4 +97,4 @@ The token proves that the user authenticated with the OAuth provider, but it doe
 
 ---
 
-Lab link: <https://portswigger.net/web-security/oauth/lab-oauth-authentication-bypass-via-oauth-implicit-flow>
+Link: https://portswigger.net/web-security/oauth/lab-oauth-authentication-bypass-via-oauth-implicit-flow

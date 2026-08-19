@@ -1,10 +1,10 @@
-# Authentication — PortSwigger Web Security Academy
+# Authentication - PortSwigger Web Security Academy
 
 Write-ups for the **Authentication** topic of the [PortSwigger Web Security Academy](https://portswigger.net/web-security/authentication).
 Each lab includes a vulnerability overview, step-by-step solution with screenshots, an explanation of the root cause, and remediation guidance.
 
 **Tools used:** Burp Suite (Proxy, Repeater, Intruder), browser
-**OWASP Top 10:** A07:2021 – Identification and Authentication Failures
+**OWASP Top 10:** A07:2021 - Identification and Authentication Failures
 
 ---
 
@@ -20,6 +20,6 @@ Each lab includes a vulnerability overview, step-by-step solution with screensho
 
 ## Key takeaways
 
-- **Enforce authentication state server-side** — never trust the UI flow. A session must not be considered authenticated until *all* required factors succeed.
-- **Bind security tokens to a single account and a single use** — password reset tokens should be derived back to the user, not paired with an attacker-controlled `username`.
-- **Avoid information leakage** — login and recovery flows should return generic responses so they don't reveal whether an account exists.
+- **Enforce authentication state server-side** - never trust the UI flow. A session must not be considered authenticated until *all* required factors succeed.
+- **Bind security tokens to a single account and a single use** - password reset tokens should be derived back to the user, not paired with an attacker-controlled `username`.
+- **Avoid information leakage** - login and recovery flows should return generic responses so they don't reveal whether an account exists.

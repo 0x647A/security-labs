@@ -4,8 +4,6 @@
 
 **Level: Apprentice**
 
-**Link:** https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-in-error-messages
-
 ---
 
 ## Vulnerability Overview
@@ -90,3 +88,7 @@ Apache Struts 2.3.31 is a real version with known critical vulnerabilities, incl
 - **Never expose stack traces, framework names, or version strings to users** - log them internally instead.
 - **Configure frameworks to suppress debug output in production** (for example, `struts.devMode=false` in Struts, or `server.error.include-stacktrace=never` in Spring Boot).
 - **Keep dependencies updated** - version disclosure is far less dangerous when the running version has no known unpatched vulnerabilities.
+
+---
+
+Link: https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-in-error-messages

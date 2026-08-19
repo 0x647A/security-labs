@@ -9,7 +9,7 @@
 
 This lab extends the "unprotected admin panel" concept by using an obfuscated URL (a random-looking path like `/admin-tno858`) instead of an obvious name. The developer's assumption is that an attacker won't know this path.
 
-The critical mistake: the path is embedded in client-side JavaScript that is sent to every user's browser. An attacker only needs to read the page source to find it. This is a classic **security through obscurity** failure — the secret is stored in a place any attacker can read.
+The critical mistake: the path is embedded in client-side JavaScript that is sent to every user's browser. An attacker only needs to read the page source to find it. This is a classic **security through obscurity** failure - the secret is stored in a place any attacker can read.
 
 Even if the path were truly unpredictable at runtime, the underlying problem would remain: there is no server-side authorization check protecting the endpoint.
 
@@ -52,7 +52,7 @@ Even if the path were truly unpredictable at runtime, the underlying problem wou
 
 ## Why This Works
 
-The `isAdmin` flag controls what link is shown in the UI — but it does not control what the server accepts. The JavaScript that builds the admin link runs in the browser, where it can be inspected by anyone. The server simply serves the admin panel to whoever requests that URL, regardless of their role.
+The `isAdmin` flag controls what link is shown in the UI - but it does not control what the server accepts. The JavaScript that builds the admin link runs in the browser, where it can be inspected by anyone. The server simply serves the admin panel to whoever requests that URL, regardless of their role.
 
 Obfuscation is not authentication. A random path is not a password.
 
@@ -60,10 +60,10 @@ Obfuscation is not authentication. A random path is not a password.
 
 ## Remediation
 
-- **Server-side authorization on every admin route** — the URL being hard to guess is irrelevant if there's no role check on the server.
-- **Never embed privileged paths in client-side code** — if the path must be dynamic, generate it server-side and return it only in the authenticated admin response.
-- **Deny by default** — unauthenticated or unauthorized requests to any `/admin*` route should return `403 Forbidden`, not the page content.
-- **Rotate or invalidate paths** — even if the obscure URL is useful as an extra layer, it must never be the only layer.
+- **Server-side authorization on every admin route** - the URL being hard to guess is irrelevant if there's no role check on the server.
+- **Never embed privileged paths in client-side code** - if the path must be dynamic, generate it server-side and return it only in the authenticated admin response.
+- **Deny by default** - unauthenticated or unauthorized requests to any `/admin*` route should return `403 Forbidden`, not the page content.
+- **Rotate or invalidate paths** - even if the obscure URL is useful as an extra layer, it must never be the only layer.
 
 ---
 

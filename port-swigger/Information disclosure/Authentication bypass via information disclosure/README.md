@@ -4,8 +4,6 @@
 
 **Level: Apprentice**
 
-**Link:** https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-authentication-bypass
-
 ---
 
 ## Vulnerability Overview
@@ -100,3 +98,7 @@ The underlying access-control failure is that the server trusts a client-supplie
   ```
 - **Do not use client-supplied headers for IP-based access control.** Determine the client's IP from the TCP connection. If the application sits behind a trusted reverse proxy, read `X-Forwarded-For` only where the proxy sets it and strips any client-supplied copy, and never trust it when the request can reach the application directly.
 - **Use role-based access control for admin functionality.** Network location is not a reliable or safe authorization mechanism.
+
+---
+
+Link: https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-authentication-bypass

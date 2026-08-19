@@ -1,4 +1,4 @@
-# PortSwigger Web Security Academy – Apprentice Level
+# PortSwigger Web Security Academy - Apprentice Level
 
 Solutions and notes from **59 Apprentice-level labs** on the PortSwigger Web Security Academy platform.
 
@@ -42,19 +42,19 @@ The Apprentice level builds foundational knowledge of how web vulnerabilities wo
 
 Each lab follows a consistent structure:
 
-- **Vulnerability Overview** — root cause, why it's dangerous, what the query/token/request looks like before and after injection
-- **Steps to Solve** — numbered walkthrough with screenshots at each step
-- **Why This Works** — technical explanation of the exploitation mechanics
-- **Remediation** — concrete defensive guidance (parameterized queries, validation, secure headers, etc.)
+- **Vulnerability Overview** - root cause, why it's dangerous, what the query/token/request looks like before and after injection
+- **Steps to Solve** - numbered walkthrough with screenshots at each step
+- **Why This Works** - technical explanation of the exploitation mechanics
+- **Remediation** - concrete defensive guidance (parameterized queries, validation, secure headers, etc.)
 
 ---
 
 ## Tools
 
-- **Burp Suite** — proxy, repeater, intercept
-- **Burp JWT Editor** — JWT algorithm confusion and signing attacks
-- **Browser DevTools** — Application tab for cookie/JWT inspection
-- **jwt.io** — JWT decoding and tampering
+- **Burp Suite** - proxy, repeater, intercept
+- **Burp JWT Editor** - JWT algorithm confusion and signing attacks
+- **Browser DevTools** - Application tab for cookie/JWT inspection
+- **jwt.io** - JWT decoding and tampering
 
 ---
 

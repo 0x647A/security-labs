@@ -104,8 +104,8 @@ The OS resolves the `..` components and returns the file. The web server process
 
 ---
 
-## References
+Link: https://portswigger.net/web-security/file-path-traversal/lab-simple
 
-- Lab: <https://portswigger.net/web-security/file-path-traversal/lab-simple>
-- Web Security Academy - Path traversal: <https://portswigger.net/web-security/file-path-traversal>
-- OWASP - Path Traversal: <https://owasp.org/www-community/attacks/Path_Traversal>
+Further reading:
+- Web Security Academy - Path traversal: https://portswigger.net/web-security/file-path-traversal
+- OWASP - Path Traversal: https://owasp.org/www-community/attacks/Path_Traversal

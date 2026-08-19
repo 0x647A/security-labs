@@ -114,4 +114,4 @@ The root cause is that the server lets the token itself dictate whether (and how
 
 ---
 
-**Reference:** <https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-flawed-signature-verification>
+Link: https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-flawed-signature-verification

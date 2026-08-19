@@ -4,8 +4,6 @@
 
 **Level: Apprentice**
 
-**Link:** https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-on-debug-page
-
 ---
 
 ## Vulnerability Overview
@@ -66,3 +64,7 @@ The information page was not restricted or removed before deployment. Anyone who
 - **Restrict any remaining diagnostic endpoints to internal networks only.** If diagnostic access is needed in staging, block public access with firewall rules or IP allowlists - never with path obscurity alone.
 - **Do not expose secrets to diagnostic pages.** Store secrets in a secrets manager (such as AWS Secrets Manager or HashiCorp Vault) where access is controlled and audited, rather than in process environment variables that `phpinfo()` and similar pages can read.
 - **Scan for exposed diagnostic paths in CI/CD.** Automated checks should look for common debug and info endpoints on every deployment.
+
+---
+
+Link: https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-on-debug-page

@@ -107,4 +107,4 @@ Setting `alg` to `none` and dropping the signature is one convenient way to demo
 
 ---
 
-**Reference:** <https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-unverified-signature>
+Link: https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-unverified-signature

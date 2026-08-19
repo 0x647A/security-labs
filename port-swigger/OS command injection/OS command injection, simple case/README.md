@@ -120,4 +120,4 @@ Common separators that work depending on the shell and OS:
 
 ---
 
-Lab: https://portswigger.net/web-security/os-command-injection/lab-simple
+Link: https://portswigger.net/web-security/os-command-injection/lab-simple

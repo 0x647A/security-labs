@@ -4,8 +4,6 @@
 
 **Level: Apprentice**
 
-**Link:** https://portswigger.net/web-security/nosql-injection/lab-nosql-injection-detection
-
 ---
 
 ## Vulnerability Overview
@@ -77,3 +75,7 @@ The root cause is that user input is concatenated directly into the query expres
 - **Sanitize operator characters.** Reject or escape characters such as `'`, `"`, `\`, `;`, and `||` in string inputs.
 - **Avoid JavaScript-evaluating operators.** Do not use `$where`, `mapReduce`, or `$accumulator` with user-controlled input; disable server-side JavaScript where it is not required.
 - **Use an ODM with a strict schema** (for example, [Mongoose](https://mongoosejs.com/)) that enforces expected field types.
+
+---
+
+Link: https://portswigger.net/web-security/nosql-injection/lab-nosql-injection-detection

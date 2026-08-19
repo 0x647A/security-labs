@@ -4,7 +4,7 @@ A collection of my solutions to the **Cross-Origin Resource Sharing (CORS)** lab
 [PortSwigger Web Security Academy](https://portswigger.net/web-security/cors).
 
 Each write-up documents the vulnerability, a step-by-step exploit, an explanation of *why*
-the attack works, and - with a SOC perspective - **how to detect and remediate it**.
+the attack works, and **how to remediate it**.
 
 Tools used: **Burp Suite** (Repeater, exploit server) and the browser developer tools.
 
@@ -33,16 +33,16 @@ from the victim's session and steal sensitive data such as API keys.
 
 ---
 
-## Detection (SOC perspective)
+## Recognizing CORS misconfiguration
 
-Common signals when hunting for CORS abuse in logs:
+Signals that indicate a CORS policy is exploitable, worth checking for during testing or
+code review:
 
-- Requests to sensitive endpoints (e.g. `/accountDetails`) carrying an unexpected `Origin`
-  header, or `Origin: null`.
-- Responses where `Access-Control-Allow-Origin` matches an attacker-controlled or unknown
-  origin, combined with `Access-Control-Allow-Credentials: true`.
-- Exfiltration follow-ups - outbound requests to attacker infrastructure carrying
-  response data in the URL (e.g. `GET /log?key=...`).
+- A response's `Access-Control-Allow-Origin` header exactly mirrors whatever `Origin` was
+  sent in the request, rather than a fixed value from a server-side allowlist.
+- `Access-Control-Allow-Origin: null` is present, or the server accepts `Origin: null`.
+- `Access-Control-Allow-Credentials: true` is combined with either of the above - this is
+  the combination that actually allows an attacker to read authenticated responses.
 
 ---
 

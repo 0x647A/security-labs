@@ -26,7 +26,12 @@ Identical to an unrestricted upload: the attacker achieves **Remote Code Executi
 
 ## Steps to Solve the Lab
 
-1. **Log in and attempt a normal upload**
+1. **Open the lab**
+   - Navigate to the lab's blog home page, in its initial **Not solved** state.
+
+   ![Lab home page](step1.png)
+
+2. **Log in and attempt a normal upload**
    - Log in as `wiener` and go to **My account → Upload avatar**.
    - Upload `shell.php` directly through the browser. The server rejects it:
      `Sorry, file type text/php is not allowed. Only image/jpeg and image/png are allowed.`
@@ -36,13 +41,13 @@ Identical to an unrestricted upload: the attacker achieves **Remote Code Executi
    ![Attempting to upload shell.php as the avatar](step3.png)
    ![Server rejects the PHP file: file type text/php is not allowed](step4.png)
 
-2. **Intercept the upload request in Burp**
+3. **Intercept the upload request in Burp**
    - With Burp Proxy enabled, upload the `shell.php` request and capture it in the proxy history.
    - Send the request to **Repeater**.
 
    ![Sending the intercepted upload request to Repeater in Burp Suite](step5.png)
 
-3. **Modify the request to bypass the check**
+4. **Modify the request to bypass the check**
    - In Repeater, change the **per-part** `Content-Type` of the file from `text/php` (or `application/x-php`) to `image/png`.
    - Keep the filename as `shell.php` and the body as the PHP payload:
      ```php
@@ -50,13 +55,13 @@ Identical to an unrestricted upload: the attacker achieves **Remote Code Executi
      ```
    - The request now *declares* an image while *carrying* PHP - the allowlist checks the declaration, not the payload.
 
-4. **Send the modified request**
+5. **Send the modified request**
    - The server reads `Content-Type: image/png`, the allowlist passes, and it stores the file as `avatars/shell.php`.
    - The response confirms: `The file avatars/shell.php has been uploaded`.
 
    ![Modified request with Content-Type image/png and PHP body returns 200 OK](step6.png)
 
-5. **Execute the web shell**
+6. **Execute the web shell**
    - Request the stored file directly:
      ```http
      GET /files/avatars/shell.php HTTP/2
@@ -65,12 +70,12 @@ Identical to an unrestricted upload: the attacker achieves **Remote Code Executi
 
    ![The executed web shell returns the secret in the response](answer.png)
 
-6. **Submit the secret**
+7. **Submit the secret**
    - Paste the secret into the **Submit solution** form.
 
    ![Submitting the secret via the Submit solution dialog](step7.png)
 
-7. **Result**
+8. **Result**
    - The lab banner changes to **"Congratulations, you solved the lab!"**.
 
    ![Lab solved banner](success.png)

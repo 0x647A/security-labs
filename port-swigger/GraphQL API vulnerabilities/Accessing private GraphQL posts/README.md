@@ -4,8 +4,6 @@
 
 **Level: Apprentice**
 
-**Link:** https://portswigger.net/web-security/graphql/lab-graphql-reading-private-posts
-
 ---
 
 ## Vulnerability Overview
@@ -113,3 +111,7 @@ The hidden post is not protected by authorization at the field or object level. 
 - **Do not rely on obscurity.** Excluding a record from a listing or omitting a field from the frontend query is not access control. Hidden objects that are still reachable by `id` must be protected server-side.
 - **Apply query depth and complexity limits.** These constrain introspection-style reconnaissance and abusive queries.
 - **Separate schemas where practical.** Maintain distinct schemas or gateways for public and authenticated clients instead of a single schema guarded by per-field access checks.
+
+---
+
+Link: https://portswigger.net/web-security/graphql/lab-graphql-reading-private-posts

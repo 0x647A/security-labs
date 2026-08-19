@@ -9,7 +9,7 @@
 
 This lab is a basic IDOR (Insecure Direct Object Reference): the application uses a user-supplied `id` parameter to determine which account page to display, with no check that the authenticated user matches the requested `id`. Changing the parameter to another user's identifier gives full access to their account data.
 
-The vulnerability is straightforward — the `id` parameter uses a predictable value (the username itself), making enumeration trivial.
+The vulnerability is straightforward - the `id` parameter uses a predictable value (the username itself), making enumeration trivial.
 
 ---
 
@@ -56,20 +56,20 @@ def my_account(request):
     return render('account.html', user=user)
 ```
 
-The fix — comparing `user_id` against `session.user_id` — is a single line that's missing.
+The fix - comparing `user_id` against `session.user_id` - is a single line that's missing.
 
 ---
 
 ## Remediation
 
-- **Always verify ownership** — before returning any user-specific resource, check that `session.user_id == requested_id`.
-- **Use opaque session-based lookups** — instead of accepting a user ID from the URL, derive the user from the session server-side:
+- **Always verify ownership** - before returning any user-specific resource, check that `session.user_id == requested_id`.
+- **Use opaque session-based lookups** - instead of accepting a user ID from the URL, derive the user from the session server-side:
   ```python
   def my_account(request):
       user = db.get_user(session['user_id'])  # no user input needed
       return render('account.html', user=user)
   ```
-- **Horizontal privilege escalation is still privilege escalation** — accessing another user's data of the same role is as serious as vertical escalation for the data owner.
+- **Horizontal privilege escalation is still privilege escalation** - accessing another user's data of the same role is as serious as vertical escalation for the data owner.
 
 ---
 

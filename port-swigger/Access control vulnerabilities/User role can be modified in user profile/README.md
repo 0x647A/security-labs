@@ -7,7 +7,7 @@
 
 ## Vulnerability Overview
 
-This lab demonstrates privilege escalation through a mass assignment vulnerability. The profile update endpoint accepts a JSON body and reflects back the full user object in the response — including a `roleid` field. The server processes any fields included in the request body, including ones the user shouldn't be allowed to set. By adding `"roleid": 2` to the request, a regular user can promote themselves to administrator.
+This lab demonstrates privilege escalation through a mass assignment vulnerability. The profile update endpoint accepts a JSON body and reflects back the full user object in the response - including a `roleid` field. The server processes any fields included in the request body, including ones the user shouldn't be allowed to set. By adding `"roleid": 2` to the request, a regular user can promote themselves to administrator.
 
 This is a **mass assignment** vulnerability: the server binds all incoming fields to the model without filtering out privileged ones.
 
@@ -27,7 +27,7 @@ This is a **mass assignment** vulnerability: the server binds all incoming field
    ![Email update form](step2.png)
 
 3. **Inspect the JSON response**
-   - Send the request and examine the response body — it returns a JSON object with fields like:
+   - Send the request and examine the response body - it returns a JSON object with fields like:
      ```json
      {"username": "wiener", "email": "...", "apikey": "...", "roleid": 1}
      ```
@@ -42,10 +42,10 @@ This is a **mass assignment** vulnerability: the server binds all incoming field
      ```
    - Send the modified request.
 
-   ![Modified request with roleid:2 — server accepts it](step4.png)
+   ![Modified request with roleid:2 - server accepts it](step4.png)
 
 5. **Access the admin panel**
-   - Browse to `/admin` — the panel is now accessible.
+   - Browse to `/admin` - the panel is now accessible.
 
    ![Admin panel now accessible](step5.png)
 
@@ -75,15 +75,15 @@ The response revealing `roleid` is an information disclosure that makes the fiel
 
 ## Remediation
 
-- **Explicitly allowlist updatable fields** — only apply fields the user is allowed to change. Never pass the raw request body to the ORM update method.
+- **Explicitly allowlist updatable fields** - only apply fields the user is allowed to change. Never pass the raw request body to the ORM update method.
   ```python
   # Safe approach:
   allowed = {'email'}
   update_data = {k: v for k, v in request.json.items() if k in allowed}
   user.update(update_data)
   ```
-- **Never reflect the full object back** — the response should only include fields relevant to the user. Returning `roleid` leaks the schema.
-- **Validate role changes separately** — any change to `roleid`, `is_admin`, or equivalent privilege fields must require admin authentication on the request itself.
+- **Never reflect the full object back** - the response should only include fields relevant to the user. Returning `roleid` leaks the schema.
+- **Validate role changes separately** - any change to `roleid`, `is_admin`, or equivalent privilege fields must require admin authentication on the request itself.
 
 ---
 

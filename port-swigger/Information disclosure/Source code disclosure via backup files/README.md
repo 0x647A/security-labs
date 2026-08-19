@@ -4,8 +4,6 @@
 
 **Level: Apprentice**
 
-**Link:** https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-via-backup-files
-
 ---
 
 ## Vulnerability Overview
@@ -102,3 +100,7 @@ The `/backup/` directory was not excluded from web server access. The `.bak` fil
 - **Never hard-code credentials in source code.** Use environment variables or a secrets manager. Even if the file is never exposed over HTTP, hard-coded secrets persist in version control history.
 - **Disable directory listing** - `autoindex off;` in nginx, `Options -Indexes` in Apache.
 - **Do not rely on `robots.txt` to hide sensitive paths** - it is public and advertises every path it lists.
+
+---
+
+Link: https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-via-backup-files
