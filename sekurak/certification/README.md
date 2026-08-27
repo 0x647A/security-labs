@@ -69,16 +69,17 @@ Completed a multi-semester cybersecurity program (2024–2025), 172 hours total.
 
 ## Conferences
 
-### CONFIDENCE 2025 – Kraków
-- International cybersecurity conference focused on threat research, detection techniques, and SOC operations
+### CONFidence 2025 – Kraków (June 2–3, 2025)
+- 20th anniversary / 25th edition of Poland's largest cybersecurity conference (~2000 attendees)
+- 50 talks and 8 hands-on workshops covering red teaming, malware evolution, AI/ML security, phishing & social engineering, and cyberwarfare
 
 ---
 
 ## Summary
 
-- **Total training hours:** 250+
+- **Total training hours:** 256+ (excludes two courses with unspecified duration)
 - **Main focus:** Cybersecurity fundamentals, OSINT, SIEM (Wazuh), Python scripting, network and web security basics  
-- **Experience level:** Junior, actively building SOC skills  
+- **Experience level:** Actively building SOC skills  
 - **Activity period:** 2024–2025  
 
 ---
