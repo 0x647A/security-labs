@@ -19,9 +19,9 @@ This Python script retrieves basic CPU information on macOS systems by running `
 
 The script queries CPU details on macOS using three `sysctl` keys:
 
-- `machdep.cpu.brand_string` — human-readable CPU model name (Intel only; Apple Silicon falls back gracefully)
-- `hw.physicalcpu` — number of physical CPU cores
-- `hw.logicalcpu` — number of logical CPU cores
+- `machdep.cpu.brand_string`: human-readable CPU model name (Intel only; Apple Silicon falls back gracefully)
+- `hw.physicalcpu`: number of physical CPU cores
+- `hw.logicalcpu`: number of logical CPU cores
 
 It uses the `subprocess` module to run the commands and captures their output for display.
 

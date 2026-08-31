@@ -84,5 +84,5 @@ Currently only simple, single-line constructs are supported (no nested lists, ad
 ## Notes
 
 - Make sure your terminal supports ANSI coloring for proper display.
-- The converter is basic and not a full Markdown parser—it's ideal for prototyping and learning.
+- The converter is basic and not a full Markdown parser, it's ideal for prototyping and learning.
 - You can extend the regex patterns for more Markdown features as desired.

@@ -36,10 +36,10 @@ The course includes 10 practical projects:
 
 - **Python**: 3.11+
 - **Dependencies** (vary by project):
-  - `fastapi`, `uvicorn` — REST API project
-  - `pydantic` — data validation (used with FastAPI)
-  - `requests` — HTTP requests
-  - `beautifulsoup4` — HTML parsing
+  - `fastapi`, `uvicorn`: REST API project
+  - `pydantic`: data validation (used with FastAPI)
+  - `requests`: HTTP requests
+  - `beautifulsoup4`: HTML parsing
 
 ---
 

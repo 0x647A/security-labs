@@ -75,7 +75,7 @@ Orchestrates the counting, loading and saving of history, and progress reporting
 ## Sample Output
 
 ```bash
-🔍 Counting lines of code...
+Counting lines of code...
 Total: 3245 lines of code in '/your/path'.
 Progress since last check: +35 lines of code
 ```

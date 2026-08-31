@@ -1,4 +1,4 @@
-# Python Concurrency & Hashing — CTF Practice Scripts
+# Python Concurrency & Hashing: CTF Practice Scripts
 
 A collection of Python scripts written for CTF (Capture The Flag) challenges, demonstrating hash cracking techniques, CRC collision discovery, system diagnostics, and three different concurrency models.
 
@@ -46,7 +46,7 @@ python3 crc_collision/collision_course.py
 ```
 
 ### threading_and_multiprocessing
-Three implementations of the same timed-print task — useful for comparing concurrency approaches:
+Three implementations of the same timed-print task, useful for comparing concurrency approaches:
 
 | Script | Approach | GIL impact |
 |---|---|---|

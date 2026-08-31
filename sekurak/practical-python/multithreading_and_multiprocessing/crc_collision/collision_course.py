@@ -22,8 +22,8 @@ def find_collision(iterations: int) -> tuple[str, str, int] | None:
 
     Returns (digit_password, letter_password, crc32_value) on success, None otherwise.
     """
-    digits_by_crc: dict[int, str] = {}   # crc32 value → digit-only password
-    letters_by_crc: dict[int, str] = {}  # crc32 value → letter-only password
+    digits_by_crc: dict[int, str] = {}   # crc32 value to digit-only password
+    letters_by_crc: dict[int, str] = {}  # crc32 value to letter-only password
 
     for _ in range(iterations):
         length = random.randint(MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH)
@@ -49,12 +49,12 @@ def main() -> None:
     result = find_collision(MAX_ITERATIONS)
     if result:
         digit_pass, letter_pass, crc_value = result
-        print("✅ CRC32 collision found!")
+        print("CRC32 collision found!")
         print(f"Password with digits:  {digit_pass}")
         print(f"Password with letters: {letter_pass}")
         print(f"CRC32: {crc_value}")
     else:
-        print("❌ No collision found – try increasing MAX_ITERATIONS.")
+        print("No collision found, try increasing MAX_ITERATIONS.")
 
 
 if __name__ == "__main__":

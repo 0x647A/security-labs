@@ -73,9 +73,9 @@ def generate_html_report(file_info_list):
     </style>
 </head>
 <body>
-    <h1>💻 H4CK3R C0D3 R3P0RT 💀</h1>
+    <h1>H4CK3R C0D3 R3P0RT</h1>
     <table>
-        <tr><th>🗂️ File</th><th>💬 Language</th><th>📏 Lines of Code</th></tr>
+        <tr><th>File</th><th>Language</th><th>Lines of Code</th></tr>
 """
     for filepath, lang, line_count in file_info_list:
         html_content += (

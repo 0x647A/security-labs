@@ -48,7 +48,7 @@ To increase the number of iterations, change the `MAX_ITERATIONS` constant at th
 If a collision is found:
 
 ```
-✅ CRC32 collision found!
+CRC32 collision found!
 Password with digits:  6715065347
 Password with letters: hrsgekxb
 CRC32: 3076497709
@@ -57,12 +57,12 @@ CRC32: 3076497709
 If no collision is found within the attempt limit:
 
 ```
-❌ No collision found – try increasing MAX_ITERATIONS.
+No collision found, try increasing MAX_ITERATIONS.
 ```
 
 ## Notes
 
 - CRC32 is **not** a cryptographic hash function and must never be used for password hashing or integrity verification in security contexts.
-- Collisions are practically achievable due to CRC32's small 32-bit output space — this is a feature of the demo, not a lucky outcome.
+- Collisions are practically achievable due to CRC32's small 32-bit output space. This is a feature of the demo, not a lucky outcome.
 - Increasing `MAX_ITERATIONS` improves the probability of finding a collision but also increases runtime. Memory usage is bounded by `MAX_CACHE_SIZE` (default: 500,000 entries per dictionary, ~50 MB each).
 - This script is a demonstration of checksum collision properties for educational purposes.
