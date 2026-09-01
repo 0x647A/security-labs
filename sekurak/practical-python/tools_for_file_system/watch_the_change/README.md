@@ -51,8 +51,8 @@ Both approaches print the paths of changed files to the console.
 
 The two scripts are:
 
-- `active_polling.py` — manual polling script
-- `watchdog_monitor.py` — event-driven script
+- `active_polling.py`: manual polling script
+- `watchdog_monitor.py`: event-driven script
 
 ## Usage
 
@@ -81,9 +81,9 @@ Press `Ctrl+C` to stop the observer-based script gracefully.
 
 - Uses `watchdog.observers.Observer` to watch the directory.
 - Registers a `FileSystemEventHandler` subclass (`MyHandler`) to respond to:
-  - `on_created` events — prints when files are created.
-  - `on_modified` events — prints when files are modified.
-  - `on_deleted` events — prints when files are deleted.
+  - `on_created` events: prints when files are created.
+  - `on_modified` events: prints when files are modified.
+  - `on_deleted` events: prints when files are deleted.
 - Monitors recursively in all subdirectories.
 - Runs indefinitely until interrupted (e.g., with Ctrl+C).
 

@@ -44,7 +44,7 @@ def show_progress(history):
     print(f"\nProgress since last check: {diff:+} lines of code")
 
 def main():
-    print("🔍 Counting lines of code...")
+    print("Counting lines of code...")
     current_lines = count_total_lines(SOURCE_FOLDER)
     print(f"Total: {current_lines} lines of code in '{SOURCE_FOLDER}'.")
 

@@ -24,7 +24,7 @@ Recursively scans a directory for source files, counts non-empty lines, and gene
 
 | Script | Output |
 |---|---|
-| `html_report_which_list_sources.py` | `report.html` — terminal-themed green-on-black table |
+| `html_report_which_list_sources.py` | `report.html`: terminal-themed green-on-black table |
 
 ```bash
 # Set PATH_DIR inside the script, then:

@@ -2,9 +2,9 @@
 
 This directory contains three Python scripts that each print the words `"ALA"`, `"MA"`, and `"KOTA"` at fixed intervals, using three different concurrency approaches:
 
-- **Multiprocessing** — multiple OS processes
-- **Threading** — multiple threads within one process
-- **Manual event loop** — single-threaded, time-based scheduling
+- **Multiprocessing**: multiple OS processes
+- **Threading**: multiple threads within one process
+- **Manual event loop**: single-threaded, time-based scheduling
 
 ## Table of Contents
 
@@ -52,7 +52,7 @@ Each script demonstrates a different way to achieve this concurrent timing.
 
 ## Usage
 
-Requires Python 3.10+. No external dependencies — uses the standard library only.
+Requires Python 3.10+. No external dependencies, uses the standard library only.
 
 Run each script separately:
 
@@ -78,6 +78,6 @@ Press `Ctrl+C` to stop.
 ## Notes
 
 - Output from multiprocessing and threading variants may appear interleaved because writes to stdout are not synchronized across processes or threads.
-- The manual event loop produces sequential output within each iteration, so interleaving is not possible — but timing can drift slightly if the loop body is slow.
-- Daemon processes and threads terminate when the main process exits — no graceful cleanup is implemented, which is acceptable here but should be addressed in long-running production code.
+- The manual event loop produces sequential output within each iteration, so interleaving is not possible, but timing can drift slightly if the loop body is slow.
+- Daemon processes and threads terminate when the main process exits. No graceful cleanup is implemented, which is acceptable here but should be addressed in long-running production code.
 - For production use, consider `threading.Event` or `asyncio` for cooperative cancellation and graceful shutdown.

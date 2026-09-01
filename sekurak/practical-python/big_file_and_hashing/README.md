@@ -83,14 +83,14 @@ The script will output logs showing progress, detected corrupted regions, and fi
 
 ## Script Functions Overview
 
-- `solve_pow()` — Solves the PoW challenge by brute-forcing a nonce.
-- `get_valid_pow()` — Manages PoW token validity and renewal.
-- `get_correct_hash(offset, size, pow_token)` — Retrieves a SHA-256 hash of a file fragment from the server.
-- `get_correct_chunk(offset, pow_token)` — Gets a correct 32-byte chunk of data from the server.
-- `hierarchical_binary_search(original, fixed, start, end)` — Recursively detects and fixes corrupted data blocks.
-- `find_corrupted_regions(original)` — Scans file with large blocks to find corrupted regions.
-- `fix_corrupted_regions(original, fixed, corrupted_regions)` — Fixes corrupted regions in parallel.
-- `fix_file(filename)` — Main function to orchestrate repair.
+- `solve_pow()`: Solves the PoW challenge by brute-forcing a nonce.
+- `get_valid_pow()`: Manages PoW token validity and renewal.
+- `get_correct_hash(offset, size, pow_token)`: Retrieves a SHA-256 hash of a file fragment from the server.
+- `get_correct_chunk(offset, pow_token)`: Gets a correct 32-byte chunk of data from the server.
+- `hierarchical_binary_search(original, fixed, start, end)`: Recursively detects and fixes corrupted data blocks.
+- `find_corrupted_regions(original)`: Scans file with large blocks to find corrupted regions.
+- `fix_corrupted_regions(original, fixed, corrupted_regions)`: Fixes corrupted regions in parallel.
+- `fix_file(filename)`: Main function to orchestrate repair.
 
 ## Sample Output
 

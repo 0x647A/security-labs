@@ -1,9 +1,9 @@
 # Programming Language Detection Script
 
 This script detects the programming language of a given source code file using three different methods:
-1. **Pygments Lexer Guessing** — utilizes the `pygments` library to analyze the file content and guess the language.
-2. **Regex Pattern Matching** — searches for language-specific patterns in the file lines using regular expressions.
-3. **Keyword Matching** — scans the file content for specific keywords commonly found in certain languages.
+1. **Pygments Lexer Guessing**: utilizes the `pygments` library to analyze the file content and guess the language.
+2. **Regex Pattern Matching**: searches for language-specific patterns in the file lines using regular expressions.
+3. **Keyword Matching**: scans the file content for specific keywords commonly found in certain languages.
 
 ## Table of Contents
 
@@ -79,4 +79,4 @@ If a method cannot detect the language, it will print a message accordingly or p
 - The detection methods complement each other; some languages might be detected more reliably by one method than others.
 - The regex and keyword sets are limited and can be extended to cover more languages or more patterns.
 - For accurate results with Pygments, ensure the source file encoding is UTF-8 and the content resembles a known language.
-- The script currently detects Python, C/C++, PHP, and HTML — feel free to expand regex/keyword dictionaries as needed.
+- The script currently detects Python, C/C++, PHP, and HTML. Feel free to expand regex/keyword dictionaries as needed.

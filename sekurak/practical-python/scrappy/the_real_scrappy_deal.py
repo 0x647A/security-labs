@@ -78,7 +78,7 @@ def extract_links(content: str, base_url: str) -> set[str]:
     except Exception as exc:
         logger.debug("HTML parsing failed for %s: %s", base_url, exc)
 
-    # CSS url() references — not captured by tag-based parsing above
+    # CSS url() references, not captured by tag-based parsing above
     pattern = r'url\(["\']?([^"\')\s]+)["\']?\)'
     for match in re.finditer(pattern, content, re.IGNORECASE):
         links.add(urljoin(base_url, match.group(1)))
@@ -123,7 +123,7 @@ def search_for_flag() -> str | None:
         try:
             logger.info("Visiting: %s", current_url)
 
-            # HEAD first — avoids downloading binary files unnecessarily
+            # HEAD first, avoids downloading binary files unnecessarily
             head = session.head(current_url, timeout=10, allow_redirects=True)
 
             # Validate the *final* URL after any redirects, not just the original

@@ -40,7 +40,7 @@ def solve_pow():
 def get_valid_pow():
     """Get valid PoW token, renewing if necessary.
 
-    Lock is held during solve_pow() intentionally — prevents multiple threads
+    Lock is held during solve_pow() intentionally, prevents multiple threads
     from solving PoW simultaneously when the token expires.
     """
     global current_pow, pow_timestamp
