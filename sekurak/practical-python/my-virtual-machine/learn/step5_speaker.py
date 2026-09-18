@@ -9,11 +9,10 @@ Note: this uses `afplay`, which only exists on macOS. On Linux or
 Windows, see pikvm/sound.py for a cross-platform player.
 """
 
-import struct
-import wave
-import subprocess
 import os
-
+import struct
+import subprocess
+import wave
 
 # ============================================================
 # SPEAKER - same as in step 0

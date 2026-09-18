@@ -4,11 +4,10 @@ STEP 7 - Labels. Jumps by name instead of by number.
 Run:  python3 step7_labels.py
 """
 
-import struct
-import wave
-import subprocess
 import os
-
+import struct
+import subprocess
+import wave
 
 # ============================================================
 # SPEAKER (unchanged)

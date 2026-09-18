@@ -4,11 +4,10 @@ STEP 6 - Assembler. Instead of writing numbers, we write functions.
 Run:  python3 step6_assembler.py
 """
 
-import struct
-import wave
-import subprocess
 import os
-
+import struct
+import subprocess
+import wave
 
 # ============================================================
 # SPEAKER (unchanged)

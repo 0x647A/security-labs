@@ -9,11 +9,10 @@ We add:
 Run:  python3 step9_melody.py
 """
 
-import struct
-import wave
-import subprocess
 import os
-
+import struct
+import subprocess
+import wave
 
 # ============================================================
 # SPEAKER

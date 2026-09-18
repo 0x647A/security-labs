@@ -7,11 +7,10 @@ make a "pixel art" sound. We'll build the machine on top of this.
 Run:  python3 test_sound.py
 """
 
-import struct     # for turning numbers into bytes
-import wave       # for writing a .wav file
-import subprocess # for launching the system player
-import os         # for removing the temp file
-
+import os  # for removing the temp file
+import struct  # for turning numbers into bytes
+import subprocess  # for launching the system player
+import wave  # for writing a .wav file
 
 # ============================================================
 # SETTINGS

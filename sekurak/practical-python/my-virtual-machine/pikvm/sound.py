@@ -12,7 +12,6 @@ import subprocess
 import sys
 import wave
 
-
 # How many samples (numbers) describe one second of sound. 44100 is the CD standard.
 SAMPLE_RATE = 44100
 

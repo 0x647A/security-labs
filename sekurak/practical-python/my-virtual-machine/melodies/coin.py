@@ -3,10 +3,18 @@ Sound effects straight out of 8-bit games.
 """
 
 from pikvm.assembler import (
-    duration, add, label, play, halt, note, compare, jump_if,
-    load, assemble,
+    add,
+    assemble,
+    compare,
+    duration,
+    halt,
+    jump_if,
+    label,
+    load,
+    note,
+    play,
 )
-from pikvm.notes import REST, C2, E3, B2, G2
+from pikvm.notes import B2, C2, E3, G2, REST
 
 program = assemble(
     # Picking up a coin - two quick rising sounds.

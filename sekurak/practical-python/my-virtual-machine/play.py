@@ -15,9 +15,8 @@ import pathlib
 import sys
 
 from pikvm.assembler import disassemble
-from pikvm.sound import play, save_wav
 from pikvm.machine import Machine
-
+from pikvm.sound import play, save_wav
 
 MELODIES_DIR = pathlib.Path(__file__).parent / "melodies"
 
@@ -34,12 +33,24 @@ def main():
     parser = argparse.ArgumentParser(
         description="A virtual machine that plays music.",
     )
-    parser.add_argument("melody", nargs="?", help="melody name from the melodies/ directory")
-    parser.add_argument("--trace", action="store_true", help="show step-by-step execution")
-    parser.add_argument("--disassemble", action="store_true", help="print the bytecode as text")
-    parser.add_argument("--bytes", action="store_true", help="print the raw bytes")
-    parser.add_argument("--save", action="store_true", help="save a .wav instead of just playing")
-    parser.add_argument("--quiet", action="store_true", help="don't play any sound")
+    parser.add_argument(
+        "melody", nargs="?", help="melody name from the melodies/ directory"
+    )
+    parser.add_argument(
+        "--trace", action="store_true", help="show step-by-step execution"
+    )
+    parser.add_argument(
+        "--disassemble", action="store_true", help="print the bytecode as text"
+    )
+    parser.add_argument(
+        "--bytes", action="store_true", help="print the raw bytes"
+    )
+    parser.add_argument(
+        "--save", action="store_true", help="save a .wav instead of just playing"
+    )
+    parser.add_argument(
+        "--quiet", action="store_true", help="don't play any sound"
+    )
 
     args = parser.parse_args()
 

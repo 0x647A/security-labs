@@ -6,7 +6,15 @@ until it crosses a threshold.
 """
 
 from pikvm.assembler import (
-    duration, add, label, play, halt, compare, jump_if, load, assemble,
+    add,
+    assemble,
+    compare,
+    duration,
+    halt,
+    jump_if,
+    label,
+    load,
+    play,
 )
 
 program = assemble(

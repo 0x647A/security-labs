@@ -9,11 +9,10 @@ SOLUTION: numbers bigger than 255 get stored across TWO bytes.
 Run:  python3 step8_bytes.py
 """
 
-import struct
-import wave
-import subprocess
 import os
-
+import struct
+import subprocess
+import wave
 
 # ============================================================
 # SPEAKER (unchanged)
