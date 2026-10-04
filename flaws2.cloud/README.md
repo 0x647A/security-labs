@@ -32,7 +32,7 @@ flowchart LR
 | **23:05:53-23:06:33** | `level1` | **104.102.221.250** | `ListImages` -> `BatchGetImage` -> `GetDownloadUrlForLayer` | image downloaded via AWS CLI |
 | **23:09:28** | `level3` | **104.102.221.250** | `ListBuckets` | stolen ECS keys |
 
-Full timeline and noise analysis: [03-cloudtrail-analysis-jq](03-cloudtrail-analysis-jq/).
+Full timeline and noise analysis: [Level 3 - Log analysis with jq](level3/).
 
 ---
 
@@ -50,11 +50,11 @@ Full timeline and noise analysis: [03-cloudtrail-analysis-jq](03-cloudtrail-anal
 
 | # | Topic | |
 |---|---|---|
-| 1 | Acquiring CloudTrail logs | [Open](01-cloudtrail-log-acquisition/) |
-| 2 | Cross-account investigation access | [Open](02-cross-account-access/) |
-| 3 | Log analysis with `jq` | [Open](03-cloudtrail-analysis-jq/) |
-| 4 | Credential theft detection | [Open](04-credential-theft-detection/) |
-| 5 | Public ECR repository | [Open](05-public-ecr-repository/) |
+| 1 | Acquiring CloudTrail logs | [Open](level1/) |
+| 2 | Cross-account investigation access | [Open](level2/) |
+| 3 | Log analysis with `jq` | [Open](level3/) |
+| 4 | Credential theft detection | [Open](level4/) |
+| 5 | Public ECR repository | [Open](level5/) |
 
 ---
 

@@ -1,6 +1,6 @@
 # Level 1 - CloudTrail Log Acquisition
 
-[Back to investigation summary](../README.md) | Lab page: [Objective 1](http://flaws2.cloud/defender1.htm)
+[Back to investigation summary](../README.md) | Lab page: [Objective 1](http://flaws2.cloud/defender.htm)
 
 **Question:** Where is the evidence of the incident, and how do I collect it without touching the compromised account?
 
@@ -66,7 +66,7 @@ The file name contains the account ID, the region and the delivery time.
 ## Security notes
 
 - `aws configure` stores keys in plaintext in `~/.aws/credentials`. The lab recommends [aws-vault](https://github.com/99designs/aws-vault), which keeps them in the OS keychain. For real investigations I'd use short-lived credentials (SSO / aws-vault) instead of long-lived access keys.
-- The `flaws2-logs` bucket is public **on purpose**, so that Athena can read it in Level 6. In production, a log archive bucket should be the opposite: tightly restricted, write-once (e.g. S3 Object Lock) and readable only by the security team. An attacker who can read or delete logs can study or erase the evidence.
+- The `flaws2-logs` bucket is public **on purpose**, so that Athena can read it in Objective 6. In production, a log archive bucket should be the opposite: tightly restricted, write-once (e.g. S3 Object Lock) and readable only by the security team. An attacker who can read or delete logs can study or erase the evidence.
 - Investigation credentials should be read-only and scoped to the logs they need.
 
 ---

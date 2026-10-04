@@ -63,7 +63,7 @@ jq -cr '.Records[] | [.eventTime, .sourceIPAddress, .userIdentity.arn,
 
 | `userIdentity.type` | Count | What it is | Verdict |
 |---|---|---|---|
-| `AWSAccount` with `ANONYMOUS_PRINCIPAL` | 22 | Unauthenticated `GetObject` on S3-hosted websites. The user agent is a Mac browser, not the CLI | Normal web traffic, but all from **104.102.221.250**, so it shows the attacker's browsing path |
+| `AWSAccount` with `ANONYMOUS_PRINCIPAL` | 22 | Unauthenticated `GetObject` on S3-hosted websites. The user agent is Chrome on macOS, not the CLI | Normal web traffic, but all from **104.102.221.250**, so it shows the attacker's browsing path |
 | `AWSService` | 5 | AWS acting on its own behalf: ECS and Lambda assuming their roles (`AssumeRole`), API Gateway invoking Lambda (`Invoke`) | Expected platform behaviour |
 | `AssumedRole` | 10 | API calls made with role credentials | **Needs a closer look** |
 

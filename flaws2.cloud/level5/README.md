@@ -66,14 +66,33 @@ aws --profile target_security ecr get-repository-policy --repository-name level2
 }
 ```
 
+**3. What could the Lambda role do by itself? Its identity policy**
+
+```bash
+aws --profile target_security iam get-role-policy --role-name level1 --policy-name level1
+```
+
+```json
+"Statement": [
+  { "Effect": "Allow", "Action": ["s3:GetObject"],  "Resource": "arn:aws:s3:::level1.flaws2.cloud/*" },
+  { "Effect": "Allow", "Action": ["s3:ListBucket"], "Resource": "arn:aws:s3:::level1.flaws2.cloud" },
+  { "Effect": "Allow",
+    "Action": ["ecr:ListImages", "ecr:GetDownloadUrlForLayer", "ecr:BatchGetImage"],
+    "Resource": "arn:aws:ecr:*:653711331788:repository/level2" },
+  { "Effect": "Allow", "Action": ["ecr:GetAuthorizationToken"], "Resource": "*" }
+]
+```
+
+The role has an inline policy `level1` and no attached managed policies. It grants ECR read access to repository `level2` and `s3:ListBucket` on `level1.flaws2.cloud`, which covers every call the attacker made with these keys.
+
 ---
 
 ## Analysis
 
-- **`"Principal": "*"` on a private ECR repository means any authenticated AWS principal, in any AWS account.** ECR API calls still need AWS credentials, so it isn't anonymous like a public S3 website. In practice it's still public, because anyone can create an AWS account. The lab confirms that the listing works "from any AWS account from a user that has ECR privileges".
-- **In this incident, two problems overlap.** The attacker didn't need their own account: they used the stolen `level1` keys, and the lab author gave the Lambda role ECR permissions. So the pull would have worked even with a correct repository policy. The Lambda role's excess permissions are a separate finding.
+- **`"Principal": "*"` on a private ECR repository means any authenticated AWS principal, in any AWS account.** ECR API calls still need AWS credentials, so it isn't anonymous like a public S3 website. In practice it's still public, because anyone can create an AWS account. The lab's Objective 5 page describes it the same way: "public to the world".
+- **In this incident, two problems overlap.** The attacker didn't need their own account: they used the stolen `level1` keys, and the Lambda role's own policy allows ECR reads on `level2` (step 3). Within the same account, either the identity policy or the resource policy is enough to allow a call. So the pull would have worked even with a correct repository policy. The fact that the calls succeeded does not prove this on its own, which is why I checked the role policy. The Lambda role's excess permissions are a separate finding.
 - **Why an image matters:** image layers can contain application code, configuration and build-time secrets. Per the lab's Attacker path, the image's build history contained the password for the container web app (`htpasswd` in a `RUN` command). That is how the attacker got into the app compromised in [Level 4](../level4/).
-- **Order of events:** discovery through ECR happened *before* the ECS credential theft (23:06 vs 23:09). The attacker used each compromised resource to find the next one.
+- **Order of events:** discovery through ECR happened *before* the stolen ECS credentials were first used (23:06 vs 23:09). CloudTrail doesn't show when they were actually stolen, only when they were used. The attacker used each compromised resource to find the next one.
 
 ---
 

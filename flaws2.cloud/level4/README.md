@@ -37,7 +37,7 @@ aws --profile target_security iam get-role --role-name level3
 "Action": "sts:AssumeRole"
 ```
 
-**3. Trace where the key came from.** In the `AssumeRole` event at 22:31:59 ([level 3, screenshot 3](../level3/03-raw-cloudtrail-records.png)), `ecs-tasks.amazonaws.com` assumes `level3` for task session `d190d14a-...` and receives the key ending **`BSJS`**. That is the same key used for `ListBuckets`.
+**3. Trace where the key came from.** In the `AssumeRole` event at 22:31:59, `ecs-tasks.amazonaws.com` assumes `level3` for task session `d190d14a-...` and receives the key ending **`BSJS`**. That is the same key used for `ListBuckets`. The key is redacted on my screenshots ([level 3, screenshot 3](../level3/03-raw-cloudtrail-records.png) shows the end of that event and the `ecsTaskExecutionRole` assumption below it), but the full key ID `ASIA...BSJS` is printed on the lab's [Objective 4](http://flaws2.cloud/defender4.htm) page.
 
 ---
 
@@ -67,7 +67,7 @@ This matches the detection idea from Will Bengtson's talk *Detecting Credential 
 
 - **Detection:** role session whose issuer is an AWS service (ECS/Lambda/EC2) + `sourceIPAddress` outside AWS -> high-severity alert. GuardDuty provides this as `UnauthorizedAccess:IAMUser/ResourceCredentialExfiltration.OutsideAWS` (for Lambda/ECS) and `...InstanceCredentialExfiltration.OutsideAWS` (for EC2).
 - **Containment:** revoke active sessions for `level3` and stop or redeploy the task (new credentials).
-- **Scoping:** search all events with `accessKeyId = ASIA...BSJS` and `sourceIPAddress = 104.102.221.250` to see everything the attacker did. In this log set, that is `ListBuckets` only.
+- **Scoping:** run two separate searches: every event with `accessKeyId = ASIA...BSJS` (from any IP) and every event from `sourceIPAddress = 104.102.221.250` (with any identity). Combining both conditions with AND would miss the key being used from another IP. In this log set, the key search returns `ListBuckets` only. The IP search returns the stolen Lambda key activity (Level 5) and the anonymous website browsing.
 - **Prevention:** fix the SSRF (allow-list proxy destinations, block `169.254.0.0/16`), and review whether the task role needs `s3:ListAllMyBuckets` at all.
 
 ---
