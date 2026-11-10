@@ -6,7 +6,7 @@ Portfolio of certifications, trainings, and projects in cybersecurity, OSINT, Wa
 
 ## SEKURAK.ACADEMY (Securitum)
 
-Completed a multi-semester cybersecurity program (2024–2025), 172 hours total.
+Completed a multi-semester cybersecurity program (2024–2026), 200 hours total.
 
 ### Semester I – 2024
 - Duration: 47h | CPE/ECE: 47  
@@ -27,6 +27,11 @@ Completed a multi-semester cybersecurity program (2024–2025), 172 hours total.
 - Duration: 43h | CPE/ECE: 43  
 - [Certificate PDF](./academy/sekurak_academy_semester_II_2025.pdf)  
 - Key skills: Secure network architecture, Wazuh integration, OSINT advanced, Red Team/Blue Team exercises, Security audit
+
+### Semester I – 2026
+- Duration: 28h | CPE/ECE: 28  
+- [Certificate PDF](./academy/sekurak_academy_semester_I_2026.pdf)  
+- Key skills: Live OSINT, nginx web server hardening, AD enumeration with BloodHound, Windows security & monitoring, threat modeling, thick client security, mobile forensics, incident response preparation, deepfake detection
 
 ---
 
@@ -69,6 +74,12 @@ Completed a multi-semester cybersecurity program (2024–2025), 172 hours total.
 
 ## Conferences
 
+### Mega Sekurak Hacking Party 2026 – Kraków (October 26–27, 2026) – CPE/ECE: 12
+- [Day 1 Certificate PDF](./MSHP/2026/MSHP_day1.pdf)  
+- [Day 2 Certificate PDF](./MSHP/2026/MSHP_day2.pdf)  
+- Day 1 tracks: Main, Linux Sec, CyberArena, NetSec – Linux malware & rootkit hunting, Red Team weaponization, Shadow AI incidents, DORA/KSC compliance, Domain Fronting, Purple Teaming in critical infrastructure
+- Day 2 tracks: Main, Chill, Windows Sec, WebSec, Hacker's Toolkit, Sekurak.Academy – AD privilege escalation, Windows backdoors, AI-assisted XSS hunting, typosquatting, firmware malware, physical pentesting, OSINT, AI-driven cybercrime
+
 ### CONFidence 2025 – Kraków (June 2–3, 2025)
 - 20th anniversary / 25th edition of Poland's largest cybersecurity conference (~2000 attendees)
 - 50 talks and 8 hands-on workshops covering red teaming, malware evolution, AI/ML security, phishing & social engineering, and cyberwarfare
@@ -77,10 +88,10 @@ Completed a multi-semester cybersecurity program (2024–2025), 172 hours total.
 
 ## Summary
 
-- **Total training hours:** 256+ (excludes two courses with unspecified duration)
+- **Total training hours:** 284+ (excludes two courses with unspecified duration and conferences)
 - **Main focus:** Cybersecurity fundamentals, OSINT, SIEM (Wazuh), Python scripting, network and web security basics  
 - **Experience level:** Actively building SOC skills  
-- **Activity period:** 2024–2025  
+- **Activity period:** 2024–2026  
 
 ---
 
